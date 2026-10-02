@@ -155,10 +155,49 @@
 
   R.shelter = function (el) {
     var list = D.shelter || [];
-    if (!list.length) { var s = el.closest("section"); (s || el).remove(); return; }
-    el.innerHTML = '<div class="shelter-grid">' + list.map(function (p, i) {
-      return '<figure class="shot shot-' + i + '"><img src="' + esc(p.img) + '" alt="' + esc(p.cap) + '" loading="lazy"><figcaption>' + esc(p.cap) + '</figcaption></figure>';
-    }).join("") + "</div>";
+    var section = el.closest("section");
+    function grid() {
+      if (!list.length) { (section || el).remove(); return; }
+      el.innerHTML = '<div class="shelter-grid">' + list.map(function (p, i) {
+        return '<figure class="shot shot-' + i + '"><img src="' + esc(p.img) + '" alt="' + esc(p.cap) + '" loading="lazy"><figcaption>' + esc(p.cap) + '</figcaption></figure>';
+      }).join("") + "</div>";
+    }
+    function fmt(d) {
+      var t = new Date(d); if (isNaN(t)) return "";
+      return t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+    }
+    function feed(posts) {
+      el.innerHTML = '<div class="fb-grid">' + posts.map(function (p) {
+        return '<a class="fb-card" href="' + esc(p.url) + '" rel="noopener" target="_blank">' +
+          '<div class="fb-photo"><img src="' + esc(p.img) + '" alt="" loading="lazy"></div>' +
+          '<div class="fb-body"><time>' + esc(fmt(p.date)) + '</time>' +
+          (p.text ? "<p>" + esc(p.text) + "</p>" : "") +
+          '<span class="fb-more">View on Facebook &rarr;</span></div></a>';
+      }).join("") + "</div>";
+      // hide a card whose picture fails to load, so nothing looks broken
+      qsa(".fb-card img", el).forEach(function (im) {
+        im.addEventListener("error", function () { var c = im.closest(".fb-card"); if (c) c.remove(); });
+      });
+    }
+    function valid(d) { return d && d.ok && Array.isArray(d.posts) && d.posts.length >= 3; }
+    function cached() { try { return JSON.parse(localStorage.getItem("laws-fb")); } catch (e) { return null; } }
+    function store(d) { try { localStorage.setItem("laws-fb", JSON.stringify(d)); } catch (e) {} }
+
+    grid(); // always start with the photo grid, so the section is never empty
+    if (!window.fetch || location.protocol === "file:") return;
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 5000);
+    fetch("/api/facebook", ctl ? { signal: ctl.signal } : {})
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        clearTimeout(timer);
+        if (valid(d)) { store(d); feed(d.posts); }
+        else { var c = cached(); if (valid(c)) feed(c.posts); }
+      })
+      .catch(function () {
+        clearTimeout(timer);
+        var c = cached(); if (valid(c)) feed(c.posts);
+      });
   };
 
   R.journey = function (el) {
