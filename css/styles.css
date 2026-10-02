@@ -54,7 +54,7 @@ p{margin:0 0 1em}
 .nav a[aria-current="page"]:not(.btn){background:var(--lilac);color:var(--jac-d);font-weight:600}
 .nav .btn{margin-left:8px;padding:12px 22px}
 .nav-toggle{display:none;font:600 1rem var(--display);background:var(--lilac);color:var(--ink);border:0;border-radius:999px;padding:11px 20px;cursor:pointer}
-@media(max-width:1020px){
+@media(max-width:1120px){
   .nav-toggle{display:inline-block}
   .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px var(--gut) 24px;gap:2px}
   .nav.open{display:flex}
@@ -278,3 +278,19 @@ label.lbl{display:block;font:600 .95rem var(--display);margin-bottom:6px}
 /* Footer on brand green */
 .site-footer{background-color:var(--leaf)}
 .band .btn-sun{color:var(--ink)}
+
+/* Cover photos */
+.hero--cover{background-size:cover;background-position:center 30%;color:#fff}
+.hero--cover h1,.hero--cover .lede{color:#fff}
+.hero--cover .btn-ghost{border-color:#fff;color:#fff}
+.hero--cover .btn-ghost:hover{background:#fff;color:var(--ink)}
+.hero--cover .btn-primary{background:var(--sun);color:var(--ink)}
+.hero--cover .btn-primary:hover{background:var(--sun-d);color:var(--ink)}
+.cover-band{background-size:cover;background-position:center 30%;color:#fff}
+.cover-band .page-head{padding-block:clamp(56px,9vw,120px) clamp(40px,6vw,80px)}
+.cover-band h1,.cover-band .lede{color:#fff}
+.cover-band .lede{max-width:34em}
+
+/* About page */
+.about-grid{display:grid;gap:clamp(24px,5vw,72px);align-items:start}
+@media(min-width:860px){.about-grid{grid-template-columns:.9fr 1.1fr}}

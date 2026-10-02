@@ -24,10 +24,11 @@
 
   /* ---------- Shell: header, footer ---------- */
   var NAV = [
+    ["about.html", "About", "about"],
     ["adopt.html", "Adopt", "adopt"],
     ["rescue.html", "Rescue", "rescue"],
     ["rehabilitate.html", "Rehabilitate", "rehabilitate"],
-    ["stories.html", "Success stories", "stories"],
+    ["stories.html", "Stories", "stories"],
     ["get-involved.html", "Get involved", "get-involved"],
     ["contact.html", "Contact", "contact"]
   ];
@@ -84,6 +85,26 @@
   var bgDog = find("linda");
   if (siteFoot && bgDog && bgDog.photos[0]) {
     siteFoot.style.backgroundImage = "linear-gradient(rgba(31,58,51,.92),rgba(31,58,51,.86)),url(\"" + bgDog.photos[0] + "\")";
+  }
+
+  /* Cover photos: full-width image behind the home hero and selected page headers */
+  var cover = D.covers && D.covers[page];
+  if (cover) {
+    var shade = "linear-gradient(180deg,rgba(31,58,51,.58),rgba(31,58,51,.80))";
+    var homeHero = qs(".hero");
+    if (homeHero) {
+      homeHero.classList.add("hero--cover");
+      homeHero.style.backgroundImage = shade + ",url(\"" + cover + "\")";
+    } else {
+      var ph = qs(".page-head");
+      if (ph) {
+        var band = document.createElement("div");
+        band.className = "cover-band";
+        band.style.backgroundImage = shade + ",url(\"" + cover + "\")";
+        ph.parentNode.insertBefore(band, ph);
+        band.appendChild(ph);
+      }
+    }
   }
 
   var toggle = qs(".nav-toggle");

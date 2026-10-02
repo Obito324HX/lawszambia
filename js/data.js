@@ -194,5 +194,13 @@
       { name: "Name to be added", role: "Role", photo: "assets/placeholder.svg", demo: true },
       { name: "Name to be added", role: "Role", photo: "assets/placeholder.svg", demo: true }
     ]
+
+    // Cover photos shown behind the page headers. Replace with wide, high-resolution LAWS photos.
+    // Leave a page out to keep the plain header.
   };
+  (function () {
+    var L = window.LAWS;
+    function pic(id) { var a = L.animals.filter(function (x) { return x.id === id; })[0]; return a && a.photos[0]; }
+    L.covers = { home: pic("linda"), about: pic("traiger"), adopt: pic("russy") };
+  })();
 })();
