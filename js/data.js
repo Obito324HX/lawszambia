@@ -1,7 +1,7 @@
 /*
   LAWS site content. Edit this file to change what appears on the site.
 
-  To add an animal: copy one object in `animals`, give it a new unique `id`,
+  To add an animal (dog or cat, set `species`): copy one object in `animals`, give it a new unique `id`,
   and fill in the fields. The adoption grid, profile page, rescue stories and
   homepage all update automatically. Photos go in the `photos` array
   (first photo is the cover). Use files in /assets/animals/ or full URLs.
@@ -51,6 +51,7 @@
       {
         id: "traiger",
         name: "Traiger",
+        species: "dog",
         sex: "Female",
         age: "About 5 years",
         ageGroup: "adult",
@@ -72,6 +73,7 @@
       {
         id: "russy",
         name: "Russy",
+        species: "dog",
         sex: "Female",
         age: "About 4 years",
         ageGroup: "adult",
@@ -90,6 +92,7 @@
       {
         id: "linda",
         name: "Linda",
+        species: "dog",
         sex: "Female",
         age: "Adult",
         ageGroup: "adult",
@@ -111,6 +114,7 @@
       {
         id: "gazali",
         name: "Gazali",
+        species: "dog",
         sex: "Female",
         age: "Adult",
         ageGroup: "adult",
@@ -127,6 +131,25 @@
         ],
         rescueTitle: "Rescued from a cruelty case",
         rescue: "Gazali had been neglected and mistreated before she was confiscated and placed in the care of LAWS on 30 January 2025."
+      },
+      {
+        id: "sample-cat",
+        name: "Sample cat",
+        species: "cat",
+        sex: "Female",
+        age: "About 1 year",
+        ageGroup: "young",
+        breed: "Domestic shorthair",
+        admitted: "2025-02-01",
+        status: "available",
+        demo: true,
+        temperament: ["Curious", "Affectionate"],
+        short: "Example listing. Replace it with a real cat from the shelter.",
+        photos: [],
+        story: [
+          "This is a sample listing so you can see how cats appear on the site. Replace it with a real cat, or delete it, by editing js/data.js.",
+          "Every cat gets the same profile as the dogs: a photo gallery, details and a full story."
+        ]
       }
     ],
 
@@ -156,6 +179,14 @@
         after: "assets/after-placeholder.svg",
         demo: true
       }
+    ],
+
+    // Executive board. Replace the sample entries with real names, positions and photos.
+    board: [
+      { name: "Name to be added", role: "Position", photo: "assets/placeholder.svg", demo: true },
+      { name: "Name to be added", role: "Position", photo: "assets/placeholder.svg", demo: true },
+      { name: "Name to be added", role: "Position", photo: "assets/placeholder.svg", demo: true },
+      { name: "Name to be added", role: "Position", photo: "assets/placeholder.svg", demo: true }
     ],
 
     team: [

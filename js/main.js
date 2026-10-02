@@ -32,12 +32,13 @@
     ["contact.html", "Contact", "contact"]
   ];
 
-  var MARK = '<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#4B2E83"/>' +
+  var LOGO = "https://static.wixstatic.com/media/71f40f_ef5abd7cf557480b8d9acda96177a54c~mv2.jpeg/v1/fill/w_240,h_240,al_c,q_85,enc_avif,quality_auto/WhatsApp%20Image%202024-11-25%20at%2016_53_14.jpeg";
+  var MARK = '<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#F5840C"/>' +
     '<ellipse cx="24" cy="31" rx="9.5" ry="7.5" fill="#fff"/>' +
-    '<ellipse cx="12.5" cy="22.5" rx="3.6" ry="4.6" fill="#F4B52E" transform="rotate(-18 12.5 22.5)"/>' +
+    '<ellipse cx="12.5" cy="22.5" rx="3.6" ry="4.6" fill="#1F3A33" transform="rotate(-18 12.5 22.5)"/>' +
     '<ellipse cx="19.5" cy="15.5" rx="3.6" ry="4.8" fill="#fff"/>' +
     '<ellipse cx="28.5" cy="15.5" rx="3.6" ry="4.8" fill="#fff"/>' +
-    '<ellipse cx="35.5" cy="22.5" rx="3.6" ry="4.6" fill="#F4B52E" transform="rotate(18 35.5 22.5)"/></svg>';
+    '<ellipse cx="35.5" cy="22.5" rx="3.6" ry="4.6" fill="#1F3A33" transform="rotate(18 35.5 22.5)"/></svg>';
 
   function buildHeader() {
     var links = NAV.map(function (n) {
@@ -45,35 +46,45 @@
     }).join("");
     return '<a class="skip" href="#main">Skip to content</a>' +
       '<header class="site-header"><div class="wrap bar">' +
-      '<a class="brand" href="index.html" aria-label="Lusaka Animal Welfare Society, home"><span class="brand-mark">' + MARK + '</span>' +
+      '<a class="brand" href="index.html" aria-label="Lusaka Animal Welfare Society, home"><span class="brand-mark"><img class="logo" src="' + LOGO + '" alt="" width="46" height="46"></span>' +
       '<span class="brand-name">LAWS<small>Lusaka Animal Welfare Society</small></span></a>' +
       '<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>' +
       '<nav class="nav" id="nav" aria-label="Main">' + links +
       '<a class="btn btn-sun" href="donate.html">Donate</a></nav></div></header>';
   }
 
+  var ICON_IG = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>';
+  var ICON_FB = '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.5V21h3z"/></svg>';
+
   function buildFooter() {
-    return '<footer class="site-footer"><div class="wrap"><div class="foot">' +
-      '<div><h4>Lusaka Animal Welfare Society</h4><p>We rescue, rehabilitate and rehome abandoned and neglected animals in Lusaka.</p>' +
-      '<p>' + esc(O.address) + '</p></div>' +
-      '<div><h4>Explore</h4><ul>' +
-      '<li><a href="adopt.html">Adopt</a></li><li><a href="rescue.html">Rescue</a></li>' +
-      '<li><a href="rehabilitate.html">Rehabilitate</a></li><li><a href="stories.html">Success stories</a></li>' +
-      '<li><a href="team.html">Our team</a></li></ul></div>' +
-      '<div><h4>Help</h4><ul>' +
-      '<li><a href="donate.html">Donate</a></li><li><a href="get-involved.html">Become a member</a></li>' +
-      '<li><a href="get-involved.html#volunteer">Volunteer</a></li><li><a href="contact.html">Contact us</a></li></ul></div>' +
-      '<div><h4>Contact</h4><ul>' +
+    var menu = NAV.map(function (n) { return '<li><a href="' + n[0] + '">' + n[1] + "</a></li>"; }).join("") +
+      '<li><a href="team.html">Board and team</a></li><li><a href="donate.html">Donate</a></li>';
+    return '<footer class="site-footer"><div class="wrap foot2">' +
+      '<div class="foot-brand"><img class="logo" src="' + LOGO + '" alt="" width="56" height="56"><strong>LAWS</strong></div>' +
+      '<div><h4>Menu</h4><ul class="menu-list">' + menu + '</ul></div>' +
+      '<div><h4>Info</h4><ul>' +
       '<li><a href="tel:' + esc(O.phone.replace(/\s/g, "")) + '">' + esc(O.phone) + '</a></li>' +
       '<li><a href="mailto:' + esc(O.email) + '">' + esc(O.email) + '</a></li>' +
-      '<li><a href="' + esc(O.facebook) + '" rel="noopener">Facebook</a></li>' +
-      '<li><a href="' + esc(O.instagram) + '" rel="noopener">Instagram</a></li></ul></div>' +
-      '</div><div class="legal">&copy; ' + new Date().getFullYear() + ' Lusaka Animal Welfare Society. Website by Cletus Bwalya.</div></div></footer>' +
+      '<li>' + esc(O.address) + '</li></ul>' +
+      '<div class="social"><a href="' + esc(O.instagram) + '" rel="noopener" aria-label="LAWS on Instagram">' + ICON_IG + '</a>' +
+      '<a href="' + esc(O.facebook) + '" rel="noopener" aria-label="LAWS on Facebook">' + ICON_FB + '</a></div></div>' +
+      '<div><h4>Subscribe to our newsletter</h4><form class="news" id="news-form">' +
+      '<label class="lbl" for="news-email">Email</label>' +
+      '<input class="field" id="news-email" name="email" type="email" required autocomplete="email">' +
+      '<label class="check"><input type="checkbox" required> Yes, subscribe me to your newsletter.</label>' +
+      '<button class="btn btn-light" type="submit">Submit</button></form></div>' +
+      '</div><div class="wrap legal">&copy; ' + new Date().getFullYear() + ' Lusaka Animal Welfare Society. Website by Cletus Bwalya.</div></footer>' +
       (page === "donate" ? "" : '<a class="btn btn-sun fab" href="donate.html">Donate</a>');
   }
 
   var hdr = qs("#site-header"); if (hdr) hdr.innerHTML = buildHeader();
   var ftr = qs("#site-footer"); if (ftr) ftr.innerHTML = buildFooter();
+
+  var siteFoot = qs(".site-footer");
+  var bgDog = find("linda");
+  if (siteFoot && bgDog && bgDog.photos[0]) {
+    siteFoot.style.backgroundImage = "linear-gradient(rgba(31,58,51,.92),rgba(31,58,51,.86)),url(\"" + bgDog.photos[0] + "\")";
+  }
 
   var toggle = qs(".nav-toggle");
   if (toggle) {
@@ -83,11 +94,16 @@
     });
   }
 
+  var fab = qs(".fab"), foot = qs(".site-footer");
+  if (fab && foot && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) { fab.style.display = es[0].isIntersecting ? "none" : ""; }).observe(foot);
+  }
+
   /* ---------- Cards ---------- */
   function tagCard(a) {
     return '<a class="tag" href="animal.html?id=' + encodeURIComponent(a.id) + '">' +
       '<div class="tag-photo"><img src="' + esc(photo(a)) + '" alt="' + esc(alt(a)) + '" loading="lazy"></div>' +
-      '<div class="tag-body"><h3>' + esc(a.name) + '</h3>' +
+      '<div class="tag-body">' + (a.demo ? '<span class="badge-demo">Sample listing</span>' : "") + '<h3>' + esc(a.name) + '</h3>' +
       '<p class="tag-meta">' + esc(a.breed) + ", " + esc(a.age.toLowerCase()) + '</p>' +
       '<p class="tag-line">' + esc(a.short) + '</p></div></a>';
   }
@@ -103,7 +119,9 @@
   };
 
   R.featured = function (el) {
-    var list = available().slice(0, 3);
+    var pool = available(), list = [], seen = {};
+    pool.forEach(function (a) { var sp = a.species || "dog"; if (!seen[sp] && list.length < 3) { seen[sp] = 1; list.push(a); } });
+    pool.forEach(function (a) { if (list.length < 3 && list.indexOf(a) < 0) list.push(a); });
     el.innerHTML = '<div class="tag-grid">' + list.map(tagCard).join("") + "</div>";
   };
 
@@ -132,9 +150,15 @@
       var n = all.filter(test).length;
       if (n > 0 && n < all.length) filters.push({ label: label, test: test });
     }
+    var AGE_LABEL = { adult: "Adults", young: "Young animals", senior: "Seniors", puppy: "Puppies", kitten: "Kittens" };
+    var species = {};
+    all.forEach(function (a) { species[a.species || "dog"] = 1; });
+    Object.keys(species).forEach(function (sp) {
+      add(sp === "cat" ? "Cats" : "Dogs", function (a) { return (a.species || "dog") === sp; });
+    });
     var sexes = {}, ages = {};
     all.forEach(function (a) { sexes[a.sex] = 1; ages[a.ageGroup] = 1; });
-    Object.keys(ages).forEach(function (g) { add(cap(g) + "s", function (a) { return a.ageGroup === g; }); });
+    Object.keys(ages).forEach(function (g) { add(AGE_LABEL[g] || cap(g), function (a) { return a.ageGroup === g; }); });
     Object.keys(sexes).forEach(function (s) { add(s, function (a) { return a.sex === s; }); });
 
     el.innerHTML = '<div class="toolbar"><div class="search"><label class="lbl" for="q">Search by name or breed</label>' +
@@ -196,7 +220,7 @@
       (photos.length > 1 ? '<div class="thumbs">' + photos.map(function (p, i) {
         return '<button class="thumb" type="button" data-i="' + i + '" aria-label="Show photo ' + (i + 1) + '"><img src="' + esc(p) + '" alt=""></button>';
       }).join("") + "</div>" : "") + "</div>" +
-      '<aside class="casefile"><span class="chip chip-static">' + (avail ? "Waiting for a home" : "Adopted") + "</span>" +
+      '<aside class="casefile">' + (a.demo ? demoBadge(a) + "<br>" : "") + '<span class="chip chip-static">' + (avail ? "Waiting for a home" : "Adopted") + "</span>" +
       "<h1>" + esc(a.name) + "</h1><p class=\"lede\" style=\"font-size:1.15rem;margin-bottom:0\">" + esc(a.short) + "</p>" +
       "<dl><dt>Age</dt><dd>" + esc(a.age) + "</dd><dt>Sex</dt><dd>" + esc(a.sex) + "</dd><dt>Breed</dt><dd>" + esc(a.breed) + "</dd>" +
       "<dt>At the shelter since</dt><dd>" + esc(when(a.admitted)) + "</dd><dt>Temperament</dt><dd>" + esc(a.temperament.join(", ")) + "</dd></dl>" +
@@ -258,6 +282,13 @@
     });
   };
 
+  R.board = function (el) {
+    el.innerHTML = '<div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">' + D.board.map(function (p) {
+      return '<div class="person"><div class="avatar"><img src="' + esc(p.photo) + '" alt="" loading="lazy"></div>' + demoBadge(p) +
+        "<h3>" + esc(p.name) + '</h3><p class="muted">' + esc(p.role) + "</p></div>";
+    }).join("") + "</div>";
+  };
+
   R.team = function (el) {
     el.innerHTML = '<div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">' + D.team.map(function (p) {
       return '<div class="person"><div class="avatar"><img src="' + esc(p.photo) + '" alt="" loading="lazy"></div>' + demoBadge(p) +
@@ -289,6 +320,16 @@
     else done();
   });
 
+  var news = qs("#news-form");
+  if (news) {
+    news.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var em = qs("#news-email").value;
+      window.location.href = "mailto:" + O.email + "?subject=" + encodeURIComponent("Newsletter signup") +
+        "&body=" + encodeURIComponent("Please add me to the LAWS newsletter: " + em);
+    });
+  }
+
   var form = qs("#contact-form");
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -302,7 +343,8 @@
   // Any photo that fails to load falls back to the placeholder
   document.addEventListener("error", function (e) {
     var t = e.target;
-    if (t && t.tagName === "IMG" && t.getAttribute("src") !== PLACEHOLDER) t.src = PLACEHOLDER;
+    if (t && t.tagName === "IMG" && t.classList.contains("logo")) { if (t.getAttribute("src") !== "assets/favicon.svg") t.src = "assets/favicon.svg"; }
+    else if (t && t.tagName === "IMG" && t.getAttribute("src") !== PLACEHOLDER) t.src = PLACEHOLDER;
   }, true);
 
   /* ---------- Structured data for search engines ---------- */
