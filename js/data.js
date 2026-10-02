@@ -10,10 +10,6 @@
   (and replace the text) once LAWS supplies real content.
 */
 (function () {
-  // Demo photos are LAWS's own photos hosted on their current Wix site.
-  // Before launch, download them into /assets/animals/ and point to the local files.
-  var wix = function (path) { return "https://static.wixstatic.com/media/" + path; };
-
   window.LAWS = {
     org: {
       name: "Lusaka Animal Welfare Society",
@@ -48,110 +44,293 @@
     stats: [],
 
     animals: [
-      {
-        id: "traiger",
-        name: "Traiger",
-        species: "dog",
-        sex: "Female",
-        age: "About 5 years",
-        ageGroup: "adult",
-        breed: "German Shepherd",
-        admitted: "2025-01-15",
-        status: "available",
-        hero: true,
-        temperament: ["Friendly", "Energetic", "Alert"],
-        short: "A friendly, energetic German Shepherd who loves fetch and long walks.",
-        photos: [wix("a610ee_102f1b06340c49b88f446f7620bb6d56~mv2.jpg/v1/fill/w_980,h_870,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20250228-WA0001%20(1)_edited.jpg")],
-        story: [
-          "Traiger arrived at the shelter on 15 January 2025 with her sister, Russy. Their previous owner had to give them up because of home renovations, so Traiger is now looking for a new family.",
-          "She is full of life: friendly, alert and always ready for fetch, a long walk or simply some company. She is intelligent and loyal, and would suit an active household where she gets plenty of exercise and affection.",
-          "Traiger and Russy are sisters. Ask the team about adopting them together or separately."
-        ],
-        rescueTitle: "Surrendered because of home renovations",
-        rescue: "Traiger and her sister Russy were handed over to LAWS on 15 January 2025 after their owner could no longer keep them while the home was being renovated."
-      },
-      {
-        id: "russy",
-        name: "Russy",
-        species: "dog",
-        sex: "Female",
-        age: "About 4 years",
-        ageGroup: "adult",
-        breed: "German Shepherd",
-        admitted: "2025-01-15",
-        status: "available",
-        temperament: ["Friendly", "Playful", "Energetic"],
-        short: "A playful German Shepherd, always ready for an adventure.",
-        photos: [wix("a610ee_e2715e6dc025455aac484346f1f2ab37~mv2.jpg/v1/fill/w_936,h_882,al_c,q_85,enc_avif,quality_auto/randy_edited.jpg")],
-        story: [
-          "Russy came to the shelter on 15 January 2025 with her older sister, Traiger. Their owner could not keep them during home renovations, and Russy is now waiting for a family of her own.",
-          "She has endless energy and loves company. Walks, games of fetch and time with her favourite people all make her happy. She is smart and affectionate, and would do well with an active family.",
-          "Russy and Traiger are sisters. Ask the team about adopting them together or separately."
-        ]
-      },
-      {
-        id: "linda",
-        name: "Linda",
-        species: "dog",
-        sex: "Female",
-        age: "Adult",
-        ageGroup: "adult",
-        breed: "Mixed breed",
-        admitted: "2025-01-30",
-        status: "available",
-        temperament: ["Friendly", "Playful", "Good with other dogs"],
-        short: "A gentle, trusting dog who is great with other dogs.",
-        photos: [wix("a610ee_79af3d35104743babf4ea576d06f9080~mv2.jpg/v1/fill/w_980,h_724,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20250228-WA0004_edited.jpg")],
-        spotlight: true,
-        story: [
-          "Linda reached LAWS on 30 January 2025. A group of children had been chasing her and throwing stones when a woman stepped in, opened her gate and gave Linda somewhere safe to go.",
-          "After all that, Linda is still affectionate and trusting. She is playful with people and especially happy around other dogs, so she would be a good fit for a home that already has one.",
-          "She is hoping for a family who will keep her safe and never let her feel afraid again."
-        ],
-        rescueTitle: "Chased and stoned, then taken in by a stranger",
-        rescue: "A group of children were chasing Linda and throwing stones at her when a woman opened her gate and offered her shelter. LAWS took Linda in on 30 January 2025."
-      },
-      {
-        id: "gazali",
-        name: "Gazali",
-        species: "dog",
-        sex: "Female",
-        age: "Adult",
-        ageGroup: "adult",
-        breed: "Mixed breed",
-        admitted: "2025-01-30",
-        status: "available",
-        temperament: ["Friendly", "Playful", "Affectionate"],
-        short: "A resilient, affectionate dog who loves belly rubs and company.",
-        photos: [wix("a610ee_0b25903dbe4b490f99f7bdd2dd4aa9f3~mv2.jpg/v1/fill/w_980,h_1037,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20250228-WA0006_edited.jpg")],
-        story: [
-          "Gazali arrived at the shelter on 30 January 2025. She was rescued from a cruelty case, where she had been neglected and mistreated until she was confiscated.",
-          "Her spirit is unbroken. She is friendly, playful and always up for affection, whether that means a game, a belly rub or sitting close to her favourite people. She trusts easily.",
-          "Gazali is ready to start again with a family who will cherish and protect her."
-        ],
-        rescueTitle: "Rescued from a cruelty case",
-        rescue: "Gazali had been neglected and mistreated before she was confiscated and placed in the care of LAWS on 30 January 2025."
-      },
-      {
-        id: "sample-cat",
-        name: "Sample cat",
-        species: "cat",
-        sex: "Female",
-        age: "About 1 year",
-        ageGroup: "young",
-        breed: "Domestic shorthair",
-        admitted: "2025-02-01",
-        status: "available",
-        demo: true,
-        temperament: ["Curious", "Affectionate"],
-        short: "Example listing. Replace it with a real cat from the shelter.",
-        photos: [],
-        story: [
-          "This is a sample listing so you can see how cats appear on the site. Replace it with a real cat, or delete it, by editing js/data.js.",
-          "Every cat gets the same profile as the dogs: a photo gallery, details and a full story."
-        ]
-      }
+  {
+    "id": "ndevu",
+    "name": "Ndevu",
+    "species": "dog",
+    "sex": "Male",
+    "age": "About 2 years",
+    "ageGroup": "adult",
+    "breed": "Mixed breed",
+    "admitted": "2026-06-10",
+    "status": "available",
+    "temperament": [
+      "Friendly"
     ],
+    "short": "A friendly mixed-breed who joined LAWS in June 2026.",
+    "photos": [
+      "assets/animals/ndevu-1.jpg"
+    ],
+    "story": [
+      "Ndevu joined LAWS on 10 June 2026. He is a friendly mixed-breed, about 2 years.",
+      "The team will add more of his story as it is written up. The best way to get to know Ndevu is to meet him: send an enquiry below or visit the shelter."
+    ],
+    "hero": true
+  },
+  {
+    "id": "dhalia",
+    "name": "Dhalia",
+    "species": "cat",
+    "sex": "Female",
+    "age": "About 12 months",
+    "ageGroup": "young",
+    "breed": "Domestic shorthair",
+    "admitted": "2026-05-05",
+    "status": "available",
+    "temperament": [
+      "Friendly",
+      "Shy"
+    ],
+    "short": "A gentle, shy cat whose brother has already found a home.",
+    "photos": [
+      "assets/animals/dhalia-1.jpg",
+      "assets/animals/dhalia-2.jpg"
+    ],
+    "story": [
+      "Dhalia is a gentle and shy cat who came to the shelter with her brother, Dante. Her brother was adopted, and now it is her turn to find a home.",
+      "She joined LAWS on 5 May 2026 and is about 12 months old. Staff describe her as friendly, and a little shy at first, so she will do best with a patient family who lets her settle in at her own pace."
+    ],
+    "spotlight": true,
+    "rescueTitle": "Her brother found a home. Now it's her turn.",
+    "rescue": "Dhalia came to the shelter with her brother, Dante. Dante has been adopted, and Dhalia is still waiting for her family."
+  },
+  {
+    "id": "lorenzo",
+    "name": "Lorenzo",
+    "species": "dog",
+    "sex": "Male",
+    "age": "About 2 years",
+    "ageGroup": "adult",
+    "breed": "Mixed breed",
+    "admitted": "2026-08-19",
+    "status": "available",
+    "temperament": [
+      "Friendly"
+    ],
+    "short": "A friendly mixed-breed who joined LAWS in August 2026.",
+    "photos": [
+      "assets/animals/lorenzo-1.jpg"
+    ],
+    "story": [
+      "Lorenzo joined LAWS on 19 August 2026. He is a friendly mixed-breed, about 2 years.",
+      "The team will add more of his story as it is written up. The best way to get to know Lorenzo is to meet him: send an enquiry below or visit the shelter."
+    ]
+  },
+  {
+    "id": "mand",
+    "name": "Mand",
+    "species": "cat",
+    "sex": "Male",
+    "age": "Young (age to be confirmed)",
+    "ageGroup": "young",
+    "breed": "Domestic shorthair",
+    "admitted": "2025-07-24",
+    "status": "available",
+    "temperament": [
+      "Friendly",
+      "Active",
+      "Curious"
+    ],
+    "short": "Active, alert and curious. At the shelter since he was a kitten.",
+    "photos": [
+      "assets/animals/mand-1.jpg",
+      "assets/animals/mand-2.jpg"
+    ],
+    "story": [
+      "Mand has been at the shelter since he was a kitten and is still waiting for a family to call his own. He is an active, alert and curious cat who loves to explore and would thrive in a home with room to roam.",
+      "He joined LAWS on 24 July 2025. Staff describe him as friendly."
+    ],
+    "rescueTitle": "At the shelter since he was a kitten",
+    "rescue": "Mand has been at LAWS since 24 July 2025, when he was still a kitten, and is still waiting for a family to call his own."
+  },
+  {
+    "id": "jubie",
+    "name": "Jubie",
+    "species": "dog",
+    "sex": "Female",
+    "age": "About 2 years",
+    "ageGroup": "adult",
+    "breed": "Mixed breed",
+    "admitted": "2026-08-05",
+    "status": "available",
+    "temperament": [
+      "Friendly"
+    ],
+    "short": "A friendly mixed-breed who joined LAWS in August 2026.",
+    "photos": [
+      "assets/animals/jubie-1.jpg"
+    ],
+    "story": [
+      "Jubie joined LAWS on 5 August 2026. She is a friendly mixed-breed, about 2 years.",
+      "The team will add more of her story as it is written up. The best way to get to know Jubie is to meet her: send an enquiry below or visit the shelter."
+    ]
+  },
+  {
+    "id": "upe",
+    "name": "Upe",
+    "species": "cat",
+    "sex": "Female",
+    "age": "About 2 years",
+    "ageGroup": "adult",
+    "breed": "Domestic shorthair",
+    "admitted": "2026-01-17",
+    "status": "available",
+    "temperament": [
+      "Friendly",
+      "Affectionate",
+      "Good with other cats"
+    ],
+    "short": "A sweet, affectionate cat who has waited close to a year for a family.",
+    "photos": [
+      "assets/animals/upe-1.jpg",
+      "assets/animals/upe-2.jpg"
+    ],
+    "story": [
+      "Upe has been waiting for a forever home for close to a year. She is a sweet and affectionate cat who enjoys human interaction, gets along well with other cats, and is patiently hoping for someone to finally choose her.",
+      "She joined LAWS on 17 January 2026 and is about 2 years old."
+    ],
+    "rescueTitle": "Waiting for a forever home for close to a year",
+    "rescue": "Upe joined LAWS on 17 January 2026 and has been waiting for a family ever since. She enjoys company, gets along with other cats, and is patiently hoping someone will choose her."
+  },
+  {
+    "id": "kumbi",
+    "name": "Kumbi",
+    "species": "dog",
+    "sex": "Female",
+    "age": "About 2 years",
+    "ageGroup": "adult",
+    "breed": "Mixed breed",
+    "admitted": "2026-05-19",
+    "status": "available",
+    "temperament": [
+      "Friendly"
+    ],
+    "short": "A friendly mixed-breed who joined LAWS in May 2026.",
+    "photos": [
+      "assets/animals/kumbi-1.jpg"
+    ],
+    "story": [
+      "Kumbi joined LAWS on 19 May 2026. She is a friendly mixed-breed, about 2 years.",
+      "The team will add more of her story as it is written up. The best way to get to know Kumbi is to meet her: send an enquiry below or visit the shelter."
+    ]
+  },
+  {
+    "id": "lumumba",
+    "name": "Lumumba",
+    "species": "cat",
+    "sex": "Male",
+    "age": "About 2 years",
+    "ageGroup": "adult",
+    "breed": "Domestic shorthair",
+    "admitted": "2025-01-28",
+    "status": "available",
+    "temperament": [
+      "Feral",
+      "Harmless",
+      "Independent"
+    ],
+    "short": "A feral but harmless cat looking for a farm or spacious property.",
+    "photos": [
+      "assets/animals/lumumba-2.jpg",
+      "assets/animals/lumumba-3.jpg"
+    ],
+    "story": [
+      "Lumumba is a feral but harmless cat looking for a safe place to call home. He would thrive on a farm or spacious property where he can live freely while being provided with food, water and shelter.",
+      "If you are looking for a natural rodent controller and can offer him a safe environment, Lumumba could be the perfect fit. He joined LAWS on 28 January 2025 and is about 2 years old."
+    ],
+    "rescueTitle": "A feral cat who needs room to roam",
+    "rescue": "Lumumba is a feral but harmless cat. He is not suited to a typical home, but would thrive on a farm or spacious property with food, water and shelter provided."
+  },
+  {
+    "id": "lila",
+    "name": "Lila",
+    "species": "dog",
+    "sex": "Male",
+    "age": "About 2 years",
+    "ageGroup": "adult",
+    "breed": "Mixed breed",
+    "admitted": "2026-07-15",
+    "status": "available",
+    "temperament": [
+      "Friendly"
+    ],
+    "short": "A friendly mixed-breed who joined LAWS in July 2026.",
+    "photos": [
+      "assets/animals/lila-1.jpg"
+    ],
+    "story": [
+      "Lila joined LAWS on 15 July 2026. He is a friendly mixed-breed, about 2 years.",
+      "The team will add more of his story as it is written up. The best way to get to know Lila is to meet him: send an enquiry below or visit the shelter."
+    ]
+  },
+  {
+    "id": "marley",
+    "name": "Marley",
+    "species": "dog",
+    "sex": "Male",
+    "age": "About 1 year",
+    "ageGroup": "young",
+    "breed": "Mixed breed",
+    "admitted": "2026-09-04",
+    "status": "available",
+    "temperament": [
+      "Friendly"
+    ],
+    "short": "A friendly mixed-breed who joined LAWS in September 2026.",
+    "photos": [
+      "assets/animals/marley-1.jpg"
+    ],
+    "story": [
+      "Marley joined LAWS on 4 September 2026. He is a friendly mixed-breed, about 1 year.",
+      "The team will add more of his story as it is written up. The best way to get to know Marley is to meet him: send an enquiry below or visit the shelter."
+    ]
+  },
+  {
+    "id": "wood",
+    "name": "Wood",
+    "species": "dog",
+    "sex": "Female",
+    "age": "About 1 year",
+    "ageGroup": "young",
+    "breed": "Mixed breed",
+    "admitted": "2026-08-09",
+    "status": "available",
+    "temperament": [
+      "Friendly"
+    ],
+    "short": "A friendly mixed-breed who joined LAWS in August 2026.",
+    "photos": [
+      "assets/animals/wood-1.jpg"
+    ],
+    "story": [
+      "Wood joined LAWS on 9 August 2026. She is a friendly mixed-breed, about 1 year.",
+      "The team will add more of her story as it is written up. The best way to get to know Wood is to meet her: send an enquiry below or visit the shelter."
+    ]
+  },
+  {
+    "id": "tawanda",
+    "name": "Tawanda",
+    "species": "dog",
+    "sex": "Male",
+    "age": "About 2 years",
+    "ageGroup": "adult",
+    "breed": "Mixed breed",
+    "admitted": "2026-08-17",
+    "status": "available",
+    "temperament": [
+      "Friendly"
+    ],
+    "short": "A friendly mixed-breed who joined LAWS in August 2026.",
+    "photos": [
+      "assets/animals/tawanda-1.jpg",
+      "assets/animals/tawanda-2.jpg"
+    ],
+    "story": [
+      "Tawanda joined LAWS on 17 August 2026. He is a friendly mixed-breed, about 2 years.",
+      "The team will add more of his story as it is written up. The best way to get to know Tawanda is to meet him: send an enquiry below or visit the shelter."
+    ]
+  }
+],
 
     // Sample content: replace with real stories from LAWS.
     successStories: [
@@ -201,6 +380,22 @@
   (function () {
     var L = window.LAWS;
     function pic(id) { var a = L.animals.filter(function (x) { return x.id === id; })[0]; return a && a.photos[0]; }
-    L.covers = { home: pic("linda"), about: pic("traiger"), adopt: pic("russy") };
+    var P = function (id, i) { var a = L.animals.filter(function (x) { return x.id === id; })[0]; return a && a.photos[i || 0]; };
+    // Each page cover is a strip of photos (portrait photos look best in threes).
+    L.covers = {
+      about: [P("dhalia"), P("ndevu"), P("mand")],
+      adopt: [P("lila"), P("jubie"), P("upe")],
+      rescue: [P("lumumba"), P("kumbi"), P("dhalia", 1)],
+      rehabilitate: ["assets/shelter/treatment-1.jpg", "assets/shelter/kitten-ginger.jpg", "assets/shelter/kittens-litter.jpg"]
+    };
+    L.shelter = [
+      { img: "assets/shelter/kittens-litter.jpg", cap: "A litter of kittens settling in" },
+      { img: "assets/shelter/treatment-1.jpg", cap: "Treatment time" },
+      { img: "assets/shelter/kitten-ginger.jpg", cap: "Small, and already curious" },
+      { img: "assets/shelter/cat-grey.jpg", cap: "Garden sunbathing" },
+      { img: "assets/shelter/kitten-black.jpg", cap: "First days outside" },
+      { img: "assets/shelter/cat-black.jpg", cap: "Making herself at home" }
+    ];
+    L.journeyPhotos = { rescue: "assets/shelter/kittens-yard.jpg", rehabilitate: "assets/shelter/treatment-2.jpg", rehome: P("dhalia") };
   })();
 })();

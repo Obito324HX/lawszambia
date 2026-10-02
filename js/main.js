@@ -33,7 +33,7 @@
     ["contact.html", "Contact", "contact"]
   ];
 
-  var LOGO = "https://static.wixstatic.com/media/71f40f_ef5abd7cf557480b8d9acda96177a54c~mv2.jpeg/v1/fill/w_240,h_240,al_c,q_85,enc_avif,quality_auto/WhatsApp%20Image%202024-11-25%20at%2016_53_14.jpeg";
+  var LOGO = "assets/logo.jpg";
   var MARK = '<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#F5840C"/>' +
     '<ellipse cx="24" cy="31" rx="9.5" ry="7.5" fill="#fff"/>' +
     '<ellipse cx="12.5" cy="22.5" rx="3.6" ry="4.6" fill="#1F3A33" transform="rotate(-18 12.5 22.5)"/>' +
@@ -82,7 +82,7 @@
   var ftr = qs("#site-footer"); if (ftr) ftr.innerHTML = buildFooter();
 
   var siteFoot = qs(".site-footer");
-  var bgDog = find("linda");
+  var bgDog = find("lorenzo");
   if (siteFoot && bgDog && bgDog.photos[0]) {
     siteFoot.style.backgroundImage = "linear-gradient(rgba(31,58,51,.92),rgba(31,58,51,.86)),url(\"" + bgDog.photos[0] + "\")";
   }
@@ -90,20 +90,16 @@
   /* Cover photos: full-width image behind the home hero and selected page headers */
   var cover = D.covers && D.covers[page];
   if (cover) {
-    var shade = "linear-gradient(180deg,rgba(31,58,51,.58),rgba(31,58,51,.80))";
-    var homeHero = qs(".hero");
-    if (homeHero) {
-      homeHero.classList.add("hero--cover");
-      homeHero.style.backgroundImage = shade + ",url(\"" + cover + "\")";
-    } else {
-      var ph = qs(".page-head");
-      if (ph) {
-        var band = document.createElement("div");
-        band.className = "cover-band";
-        band.style.backgroundImage = shade + ",url(\"" + cover + "\")";
-        ph.parentNode.insertBefore(band, ph);
-        band.appendChild(ph);
-      }
+    var ph = qs(".page-head");
+    if (ph) {
+      var band = document.createElement("div");
+      band.className = "cover-band";
+      var strip = document.createElement("div");
+      strip.className = "cover-strip";
+      strip.innerHTML = cover.filter(Boolean).map(function (u) { return '<img src="' + esc(u) + '" alt="" loading="eager">'; }).join("");
+      band.appendChild(strip);
+      ph.parentNode.insertBefore(band, ph);
+      band.appendChild(ph);
     }
   }
 
@@ -155,6 +151,27 @@
       '<p>Meet ' + esc(a.name) + ', now safe at the shelter and waiting for a home.</p>' +
       '<div class="btn-row"><a class="btn btn-primary" href="animal.html?id=' + encodeURIComponent(a.id) + '">Read ' + esc(a.name) + "'s story</a>" +
       '<a class="btn btn-ghost" href="rescue.html">More rescues</a></div></div></div>';
+  };
+
+  R.shelter = function (el) {
+    var list = D.shelter || [];
+    if (!list.length) { var s = el.closest("section"); (s || el).remove(); return; }
+    el.innerHTML = '<div class="shelter-grid">' + list.map(function (p, i) {
+      return '<figure class="shot shot-' + i + '"><img src="' + esc(p.img) + '" alt="' + esc(p.cap) + '" loading="lazy"><figcaption>' + esc(p.cap) + '</figcaption></figure>';
+    }).join("") + "</div>";
+  };
+
+  R.journey = function (el) {
+    var J = D.journeyPhotos || {};
+    var steps = [
+      ["rescue", "Rescue", "We take in animals who have been abandoned, mistreated or lost, and give them immediate care and a safe place to be.", "rescue.html", "Read rescue stories"],
+      ["rehabilitate", "Rehabilitate", "Medical attention, good food and patience. We help each animal recover and learn to trust people again.", "rehabilitate.html", "See how we care"],
+      ["rehome", "Rehome", "We match each animal with a family who will love them for life.", "adopt.html", "Find your match"]
+    ];
+    el.innerHTML = '<ol class="journey">' + steps.map(function (s, i) {
+      return '<li><div class="j-photo">' + (J[s[0]] ? '<img src="' + esc(J[s[0]]) + '" alt="" loading="lazy">' : "") + '<span class="j-num">0' + (i + 1) + '</span></div>' +
+        '<h3>' + s[1] + '</h3><p>' + s[2] + '</p><a href="' + s[3] + '">' + s[4] + ' &rarr;</a></li>';
+    }).join("") + "</ol>";
   };
 
   R.stats = function (el) {
