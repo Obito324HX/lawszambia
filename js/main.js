@@ -28,6 +28,7 @@
     ["adopt.html", "Adopt", "adopt"],
     ["rescue.html", "Rescue", "rescue"],
     ["rehabilitate.html", "Rehabilitate", "rehabilitate"],
+    ["educate.html", "Educate", "educate"],
     ["stories.html", "Stories", "stories"],
     ["get-involved.html", "Get involved", "get-involved"],
     ["contact.html", "Contact", "contact"]
@@ -205,7 +206,8 @@
     var steps = [
       ["rescue", "Rescue", "We take in animals who have been abandoned, mistreated or lost, and give them immediate care and a safe place to be.", "rescue.html", "Read rescue stories"],
       ["rehabilitate", "Rehabilitate", "Medical attention, good food and patience. We help each animal recover and learn to trust people again.", "rehabilitate.html", "See how we care"],
-      ["rehome", "Rehome", "We match each animal with a family who will love them for life.", "adopt.html", "Find your match"]
+      ["rehome", "Rehome", "We match each animal with a family who will love them for life.", "adopt.html", "Find your match"],
+      ["educate", "Educate", "We teach the community how to care for animals, so fewer end up abandoned or hurt in the first place.", "educate.html", "How we teach"]
     ];
     el.innerHTML = '<ol class="journey">' + steps.map(function (s, i) {
       return '<li><div class="j-photo">' + (J[s[0]] ? '<img src="' + esc(J[s[0]]) + '" alt="" loading="lazy">' : "") + '<span class="j-num">0' + (i + 1) + '</span></div>' +

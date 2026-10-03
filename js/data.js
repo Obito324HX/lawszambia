@@ -386,6 +386,7 @@
       about: [P("dhalia"), P("ndevu"), P("mand")],
       adopt: [P("lila"), P("jubie"), P("upe")],
       rescue: [P("lumumba"), P("kumbi"), P("dhalia", 1)],
+      educate: ["assets/education/dog-fence.jpg", "assets/education/puppy-cone.jpg", "assets/education/teacher-points.jpg"],
       rehabilitate: ["assets/shelter/treatment-1.jpg", "assets/shelter/kitten-ginger.jpg", "assets/shelter/kittens-litter.jpg"]
     };
     L.shelter = [
@@ -396,6 +397,6 @@
       { img: "assets/shelter/kitten-black.jpg", cap: "First days outside" },
       { img: "assets/shelter/cat-black.jpg", cap: "Making herself at home" }
     ];
-    L.journeyPhotos = { rescue: "assets/shelter/kittens-yard.jpg", rehabilitate: "assets/shelter/treatment-2.jpg", rehome: P("dhalia") };
+    L.journeyPhotos = { rescue: "assets/shelter/kittens-yard.jpg", rehabilitate: "assets/shelter/treatment-2.jpg", rehome: P("dhalia"), educate: "assets/education/puppy-cone.jpg" };
   })();
 })();

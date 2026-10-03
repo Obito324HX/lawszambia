@@ -320,7 +320,7 @@ p{line-height:1.7}
 
 /* Journey as one component with photos */
 .journey{gap:clamp(20px,3vw,40px)}
-.journey li{border-top:0;padding:0 0 28px;background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.journey li{border-top:0;padding:0 0 28px;background:#fff;border:1px solid var(--line);border-radius:26px;display:flex;flex-direction:column;position:relative}
 .journey h3,.journey p,.journey a{margin-inline:26px}
 .journey h3{margin-top:22px}
 .journey p{color:var(--ink-2);flex:1}
@@ -367,3 +367,12 @@ p{line-height:1.7}
 .fb-body p{margin:0;font-size:.98rem;line-height:1.55;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .fb-more{margin-top:auto;font:600 .92rem var(--display);color:var(--jac-d)}
 @media(max-width:560px){.fb-body{padding:12px 14px 16px}.fb-body p{font-size:.9rem;-webkit-line-clamp:4}}
+
+.j-photo{border-radius:25px 25px 0 0}
+
+/* Education page */
+.journey.plain li::after{display:none!important}
+.muted-note{font:500 .9rem var(--display);color:var(--muted)}
+.proverb{margin:56px 0 0;text-align:center}
+.proverb blockquote{margin:0;font:italic 400 clamp(1.8rem,4vw,3rem)/1.2 var(--serif);color:var(--jac-d)}
+.proverb figcaption{margin-top:10px;font:500 1.05rem var(--display);color:var(--ink-2)}
